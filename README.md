@@ -1,4 +1,4 @@
-# BitSpammer
+# BitRaider
 
 Custom made discord Raiding tool only using python 3.9
 
@@ -8,7 +8,7 @@ Custom made discord Raiding tool only using python 3.9
 1. Dowload the code as a .zip file
 2. Unpack it with winrar or a other unzipping software
 3. Run the .bat file to install all the libraries automatically or install all the required libraries yourself
-4. Run the BitSpammer.py file
+4. Run the BitRaider.py file
 
 # Requirements
 - Python 3
