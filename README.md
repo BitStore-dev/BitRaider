@@ -1,22 +1,26 @@
-# XSpammer
+# BitSpammer
 
-Discord raiding tool with 20 features. [FOR EDUCATIONAL PURPOSES]
+Custom made discord Raiding tool only using python 3.9
 
+[FOR EDUCATIONAL PURPOSES ONLY]
 
-# [YT Showcase](https://www.youtube.com/watch?v=NMCPKZmYvFA)
+# How to use
+1. Dowload the code as a .zip file
+2. Unpack it with winrar or a other unzipping software
+3. Run the .bat file to install all the libraries automatically or install all the required libraries yourself
+4. Run the BitSpammer.py file
 
-![image](https://user-images.githubusercontent.com/68393764/151676901-8ca832af-b6fe-41f8-8670-7eac5bd6e942.png)
+# Requirements
+- Python 3
+- Discord Tokens
 
-
-# Requirements/Installation
-
-Python 3.7+ [https://python.org]
-
-Run setup.bat to install the essential python modules.
-
-Setup.bat should install most of the modules, if the setup doesn't work, try to install them manually or open an issue with a screenshot of the error.
-
-
-# Credits
-
-H0LLOW
+Libraries:
+- colorama
+- numpy
+- discum
+- requests
+- pyfiglet
+- ctypes
+- pyfade
+- websocket
+- emojibase64
