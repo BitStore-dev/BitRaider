@@ -816,8 +816,8 @@ menu = '''
                             |      [6] Friend Spammer      |      [16] Token Checker        |  
                             |      [7] DM Spammer          |      [17] Status Changer       | 
                             |      [8] Nickname Changer    |      [18] Bio Changer          | 
-                            |      [9] PFP Changer         |      [19] Menu Colors          | 
-                            |      [10] Reply Spammer      |      [20] Exit                 |  
+                            |      [9] PFP Changer         |      [19] Exit                 | 
+                            |      [10] Reply Spammer      |                                |  
                             +══════════════════════════════╧════════════════════════════════+ 
 '''
 
@@ -1053,17 +1053,6 @@ while True:
 
         else:
             pass
-
-        if choice == '19':
-            color = input('Color [Red, Green, Blue, Orange]: ')
-            print('Changing color..')
-            with open('config.json', 'w') as f:
-                f.write('''{
-    "menucolor": "%s"
-}''' % str(color))
-            sleep(1)
-            print('Color changed! Restart to apply.')
-            sleep(2)
 
         if choice == '20':
             exit(0)
