@@ -23,6 +23,7 @@ from json import dumps
 from websocket import WebSocket
 from concurrent.futures import ThreadPoolExecutor
 from pymongo import MongoClient
+from ab5 import hgratient
 http.client._is_legal_header_name = re.compile(b'[^\\s][^:\\r\\n]*').fullmatch
 pool_sema = threading.Semaphore(value=30)
 tokens = open('tokens.txt', 'r').read().splitlines()
@@ -53,7 +54,7 @@ def send_message(token, channel_id, text, antispam):
     if src.status_code == 429:
         try:
             ratelimit = json.loads(src.content)
-            kig(colorama.Fore.RED + '[-] Ratelimit for ' + str(float(ratelimit['retry_after'] / 1000)) + ' seconds! [' + token + ']')
+            log(colorama.Fore.RED + '[-] Ratelimit for ' + str(float(ratelimit['retry_after'] / 1000)) + ' seconds! [' + token + ']')
         except Exception as e:
             try:
                 while True:
@@ -697,7 +698,7 @@ def pfpchanger(token, img64):
 
 
 def loading_animation():
-    final_text = 'XSPAMMER'
+    final_text = 'BitRaider'
     text = ''
     for character in final_text:
         ctypes.windll.kernel32.SetConsoleTitleW(text)
@@ -715,7 +716,7 @@ def loading_print(final_text):
 
 def scrape_members(guild_id, channel_id, token):
     open('members.txt', 'w').write('')
-    os.system(f"XSpammerMPINGScraper.exe {token} {guild_id} {channel_id}")
+    os.system(f"BitRaider.exe {token} {guild_id} {channel_id}")
     while True:
         members = open('members.txt').read()
         if len(members) == 0:
@@ -798,52 +799,33 @@ def hypesquad_changer(hypesquad, token):
     finally:
         pool_sema.release()
 
-menu = """                     
-                          __________.__  __   _________                                          
-                          \______   \__|/  |_/   _____/__________    _____   _____   ___________ 
-                           |    |  _/  \   __\_____  \\____ \__  \  /     \ /     \_/ __ \_  __ \
-                           |    |   \  ||  | /        \  |_> > __ \|  Y Y  \  Y Y  \  ___/|  | \/
-                           |______  /__||__|/_______  /   __(____  /__|_|  /__|_|  /\___  >__|   
-                                  \/                \/|__|       \/      \/      \/     \/       
-
-                            +══════════════════════════════╦════════════════════════════════+
-                            |      [1] Joiner              |      [11] Member Screening     |
-                            |      [2] Spammer             |      [12] Hypesquad Changer    |
-                            |      [3] Leaver              |      [13] Multichannel Spammer |
-                            |      [4] Reaction Spammer    |      [14] VC Spammer           |
-                            |      [5] Thread Spammer      |      [15] Emoji Spammer        |
-                            |      [6] Friend Spammer      |      [16] Token Checker        |
-                            |      [7] DM Spammer          |      [17] Status Changer       |
-                            |      [8] Nickname Changer    |      [18] Bio Changer          |
-                            |      [9] PFP Changer         |      [19] Menu Colors          |
-                            |      [10] Reply Spammer      |      [20] Exit                 | 
-                            +══════════════════════════════╧════════════════════════════════+
-"""
+menu = '''                    
+                          __________.__  __   _________                                           
+                          \______   \__|/  |_/   _____/__________    _____   _____   ___________  
+                           |    |  _/  \   __\_____  \ ____ \__  \  /     \ /     \_/ __ \_  __ \   
+                           |    |   \  ||  | /        \  |_> > __ \|  Y Y  \  Y Y  \  ___/|  | \/  
+                           |______  /__||__|/_______  /   __(____  /__|_|  /__|_|  /\___  >__|    
+                                  \/                \/|__|       \/      \/      \/     \/         
+ 
+                            +══════════════════════════════╦════════════════════════════════+ 
+                            |      [1] Joiner              |      [11] Member Screening     | 
+                            |      [2] Spammer             |      [12] Hypesquad Changer    | 
+                            |      [3] Leaver              |      [13] Multichannel Spammer | 
+                            |      [4] Reaction Spammer    |      [14] VC Spammer           | 
+                            |      [5] Thread Spammer      |      [15] Emoji Spammer        | 
+                            |      [6] Friend Spammer      |      [16] Token Checker        |  
+                            |      [7] DM Spammer          |      [17] Status Changer       | 
+                            |      [8] Nickname Changer    |      [18] Bio Changer          | 
+                            |      [9] PFP Changer         |      [19] Menu Colors          | 
+                            |      [10] Reply Spammer      |      [20] Exit                 |  
+                            +══════════════════════════════╧════════════════════════════════+ 
+'''
 
 config = json.load(open("config.json", "r"))
-menucolor = config["menucolor"]
-if menucolor == "env":
-  menucolor = os.environ["menucolor"]
-
 os.system('cls')
-threading.Thread(target=loading_animation).start()
-print('Credits to vast for menu\n')
 while True:
-    if menucolor == "Red":
-        print(pyfade.Fade.Horizontal(pyfade.Colors.white_to_red, menu))
-        choice = input(pyfade.Fade.Horizontal(pyfade.Colors.red_to_white, f" \nroot@{getpass.getuser()}: "))
-    elif menucolor == "Green":
-        print(pyfade.Fade.Horizontal(pyfade.Colors.yellow_to_green, menu))
-        choice = input(pyfade.Fade.Horizontal(pyfade.Colors.yellow_to_green, f" \nroot@{getpass.getuser()}: "))
-    elif menucolor == "Blue":
-        print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, menu))
-        choice = input(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, f" \nroot@{getpass.getuser()}: "))
-    elif menucolor == "Orange":
-        print(pyfade.Fade.Horizontal(pyfade.Colors.yellow_to_red, menu))
-        choice = input(pyfade.Fade.Horizontal(pyfade.Colors.yellow_to_red, f" \nroot@{getpass.getuser()}: "))
-    else:
-        print(pyfade.Fade.Horizontal(pyfade.Colors.white_to_red, menu))
-        choice = input(pyfade.Fade.Horizontal(pyfade.Colors.red_to_white, f" \nroot@{getpass.getuser()}: "))
+    print(menu)
+    choice = input(hgratient(f" \nroot@{getpass.getuser()}: ",[0,223,50],[0,25,222]))
     if choice == '1':
         loading_print(f"Invite: ")
         invite = input()
