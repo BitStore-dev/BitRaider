@@ -10,7 +10,7 @@ Custom made discord Raiding tool only using python 3.9
 3. Run the .bat file to install all the libraries automatically or install all the required libraries yourself
 4. Run the BitRaider.py file
 
-# Archivements
+# Achievements
 - 20 Stars - Extreme Nuke (Delete whole server)
 - 50 Stars - Recode Hchapta Solver
 - 100 Stars - Complete Recode + Your Ideas
